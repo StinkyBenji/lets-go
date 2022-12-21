@@ -3,21 +3,25 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	t.Run("Saying hello to people", func(t *testing.T) {
-
-		got := Hello("Joe")
+	t.Run("to people", func(t *testing.T) {
+		got := Hello("Joe", "")
 		want := "Hello, Joe"
 		assertCorrectMessages(t, got, want)
 	})
 
 	// Subtest
-	t.Run("say 'hello world when an empty string is supplied",
+	t.Run("an empty string is supplied",
 		func(t *testing.T) {
-			got := Hello("")
+			got := Hello("", "")
 			want := "Hello, World"
 			assertCorrectMessages(t, got, want)
 
 		})
+	t.Run("in German", func(t *testing.T) {
+		got := Hello("Maximilian", "German")
+		want := "Hallo, Maximilian"
+		assertCorrectMessages(t, got, want)
+	})
 }
 
 // testing.TB is an interface that *testing.T and *testing.B both satisfy
